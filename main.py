@@ -54,25 +54,14 @@ for x in range(numpix):
 def index(request):
     """ Render the Index page and respond to form requests """
     if request.method == 'GET':
-        #logging.debug("Get request")
+        logging.debug("Get request")
         # give the webpage access to python variables
         return render_template("index.html", my_var, my_var2)
     if request.method == 'POST':
-        #text = request.form.get("text", None)
-        #logging.debug(f'posted message: {text}')
-        #return render_template("index.html", text=text)
-        text = "clicked"
+        text = request.form.get("text", None)
         logging.debug(f'posted message: {text}')
-        solenoid_status = True;
-        if solenoid_status == True:
-            print("firing!")
-            #led.on()
-            ssr.value(1)
-            time.sleep(1)
-            ssr.value(0)
-            #led.off()
+        if text == "grog":
             print("done.")
-            solenoid_status = False;
         return render_template("index.html")
 
 @server.route("/wrong-host-redirect", methods=["GET"])
