@@ -93,7 +93,7 @@ def catch_all(request):
         return redirect("http://" + DOMAIN + "/wrong-host-redirect")
 
 # Set to Accesspoint mode
-ap = access_point("FWT")  # Change this to whatever Wifi SSID you wish
+ap = access_point("Fine With This")  # Change this to whatever Wifi SSID you wish
 ip = ap.ifconfig()[0]                   # Grab the IP address and store it
 logging.info(f"starting DNS server on {ip}")
 dns.run_catchall(ip)                    # Catch all requests and reroute them
