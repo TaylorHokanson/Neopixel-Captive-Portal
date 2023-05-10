@@ -1,4 +1,4 @@
-# Based on CyberDog by Kevin McAleer
+# Based on CyberDog by Kevin McAleer and 
 # Taylor Hokanson
 # January 2023
 
@@ -16,6 +16,8 @@ from neopixel import Neopixel
 numpix = 16
 strip = Neopixel(numpix, 0, 0, "GRB")
 red = (255, 0, 0)
+green = (0, 255, 0)
+blue = (0, 0, 255)
 off = (0, 0, 0)
 strip.brightness(2)
 

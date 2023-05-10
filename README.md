@@ -8,4 +8,5 @@ Wiring Diagram
 - 500–1000 µF/>6.3V Cap between power and ground
 
 1. Install Micropython via Thonny
-2. Drop neopixel.py in the root folder
+2. Use Thonny package manager to install Micropython-Phew
+2. Drop neopixel.py and main.py in the root folder
