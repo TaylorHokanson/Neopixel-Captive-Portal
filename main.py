@@ -10,6 +10,15 @@ import time
 from phew import logging, template, server, access_point, dns
 from phew.template import  render_template
 from phew.server import redirect
+
+import time
+from neopixel import Neopixel
+numpix = 16
+strip = Neopixel(numpix, 0, 0, "GRB")
+red = (255, 0, 0)
+off = (0, 0, 0)
+strip.brightness(2)
+
 #blinking LED
 import machine
 from machine import Pin
@@ -24,6 +33,20 @@ led.on()
 my_var = "Hello World!"
 my_var2 = ""
 solenoid_status = False
+
+for x in range(numpix):
+    strip.set_pixel(x, off)
+    strip.show()    
+
+for x in range(numpix):
+    strip.set_pixel(x, red)
+    time.sleep(0.02)
+    strip.show()
+    
+for x in range(numpix):
+    strip.set_pixel(x, off)
+    time.sleep(0.02)
+    strip.show()    
 
 @server.route("/", methods=['GET','POST'])
 def index(request):
