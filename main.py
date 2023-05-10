@@ -90,3 +90,4 @@ logging.info(f"starting DNS server on {ip}")
 dns.run_catchall(ip)                    # Catch all requests and reroute them
 server.run()                            # Run the server
 logging.info("Webserver Started")
+
