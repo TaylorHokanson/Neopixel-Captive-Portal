@@ -1,6 +1,6 @@
-# Based on CyberDog by Kevin McAleer and 
 # Taylor Hokanson
 # January 2023
+# TODO: send variables back and forth to update on index page
 
 # general
 import gc
@@ -37,18 +37,18 @@ led.on()
 def color_wipe(color, led_speed):
     for x in range(numpix):
         strip.set_pixel(x, off)
-        strip.show()    
+        strip.show()
 
     for x in range(numpix):
         strip.set_pixel(x, color)
         time.sleep(led_speed)
         strip.show()
-    
+
     for x in range(numpix):
         strip.set_pixel(x, off)
         time.sleep(led_speed)
         strip.show()
-        
+
 color_wipe(white, led_speed)
 
 @server.route("/", methods=['GET','POST'])
@@ -67,13 +67,13 @@ def index(request):
             color_wipe(green, led_speed)
         if text == "blue":
             color_wipe(blue, led_speed)
-        #global disco = global disco + 1        
+        #global disco = global disco + 1
         #return render_template("index.html", disco = str(disco))
         return render_template("index.html", disco = str(disco))
 
 @server.route("/wrong-host-redirect", methods=["GET"])
 def wrong_host_redirect(request):
-  # if the client requested a resource at the wrong host then present 
+  # if the client requested a resource at the wrong host then present
   # a meta redirect so that the captive portal browser can be sent to the correct location
   body = "<!DOCTYPE html><head><meta http-equiv=\"refresh\" content=\"0;URL='http://" + DOMAIN + "'/ /></head>"
   logging.debug("body:",body)
@@ -92,7 +92,7 @@ def catch_all(request):
         return redirect("http://" + DOMAIN + "/wrong-host-redirect")
 
 # Set to Accesspoint mode
-ap = access_point("Fine With This")     
+ap = access_point("Fine With This")
 ip = ap.ifconfig()[0]                   # Grab the IP address and store it
 #logging.info(f"starting DNS server on {ip}")
 dns.run_catchall(ip)                    # Catch all requests and reroute them
